@@ -1,0 +1,25 @@
+{
+  "name": "tictactoe_core",
+  "version": "0.0.1",
+  "description": "Javascript Implementation of Tic Tac Toe Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yknx4/tictactoe_core.git"
+  },
+  "keywords": [
+    "tic",
+    "tac",
+    "toe",
+    "game"
+  ],
+  "author": "yknx4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yknx4/tictactoe_core/issues"
+  },
+  "homepage": "https://github.com/yknx4/tictactoe_core#readme"
+}
