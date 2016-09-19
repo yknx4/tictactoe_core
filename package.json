@@ -4,7 +4,9 @@
   "description": "Javascript Implementation of Tic Tac Toe Game",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "compile": "babel --presets es2015 -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/yknx4/tictactoe_core/issues"
   },
-  "homepage": "https://github.com/yknx4/tictactoe_core#readme"
+  "homepage": "https://github.com/yknx4/tictactoe_core#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "mocha": "^3.0.2"
+  }
 }
