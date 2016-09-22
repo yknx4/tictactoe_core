@@ -2,10 +2,10 @@ import test from 'unit.js'
 import ParameterValidation from '../../lib/validation/ParameterValidation.js'
 
 describe('ParameterValidation module', function() {
-  describe('ValidateDimension', function() {
-    it('ValidateDimension(parameter) - should throw and error when Dimension is not a number', function() {
+  describe('validateDimension', function() {
+    it('validateDimension(parameter) - should throw and error when Dimension is not a number', function() {
       let validateDimensionOnString = function() {
-        ParameterValidation.ValidateDimension("1")
+        ParameterValidation.validateDimension("1")
       }
 
       test
@@ -14,9 +14,9 @@ describe('ParameterValidation module', function() {
 
     })
 
-    it('ValidateDimension(parameter, name) - should throw and error when Dimension is not a number', function() {
+    it('validateDimension(parameter, name) - should throw and error when Dimension is not a number', function() {
       let validateDimensionOnString = function() {
-        ParameterValidation.ValidateDimension("1", "one")
+        ParameterValidation.validateDimension("1", "one")
       }
 
       test
@@ -25,9 +25,9 @@ describe('ParameterValidation module', function() {
 
     })
 
-    it('ValidateDimension(parameter) - should throw and error when Dimension is negative', function() {
+    it('validateDimension(parameter) - should throw and error when Dimension is negative', function() {
       let validateDimensionOnString = function() {
-        ParameterValidation.ValidateDimension(-1)
+        ParameterValidation.validateDimension(-1)
       }
 
       test
@@ -36,9 +36,9 @@ describe('ParameterValidation module', function() {
 
     })
 
-    it('ValidateDimension(parameter, name) - should throw and error when Dimension is negative', function() {
+    it('validateDimension(parameter, name) - should throw and error when Dimension is negative', function() {
       let validateDimensionOnString = function() {
-        ParameterValidation.ValidateDimension(-1, 'negative')
+        ParameterValidation.validateDimension(-1, 'negative')
       }
 
       test
@@ -49,10 +49,10 @@ describe('ParameterValidation module', function() {
 
   })
 
-  describe('ValidatePresence', function() {
-    it('ValidatePresence(parameter) - should throw and error when Presence is not a number', function() {
+  describe('validatePresence', function() {
+    it('validatePresence(parameter) - should throw and error when Presence is not a number', function() {
       let validatePresenceOnUndefined = function() {
-        ParameterValidation.ValidatePresence()
+        ParameterValidation.validatePresence()
       }
 
       test
@@ -61,10 +61,10 @@ describe('ParameterValidation module', function() {
 
     })
 
-    it('ValidatePresence(parameter, name) - should throw and error when Presence is not a number', function() {
+    it('validatePresence(parameter, name) - should throw and error when Presence is not a number', function() {
       let validatePresenceOnUndefined = function() {
         let thisIsUndefined
-        ParameterValidation.ValidatePresence(thisIsUndefined, "one")
+        ParameterValidation.validatePresence(thisIsUndefined, "one")
       }
 
       test

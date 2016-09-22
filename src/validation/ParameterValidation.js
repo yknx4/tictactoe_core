@@ -1,29 +1,44 @@
 import _ from 'underscore'
 
-function ValidateDimension(dimension, name){
+/**
+ * validateDimension - Validates the input is a valid Dimension
+ *  - it should be a number
+ *  - it should be positive
+ *  - throws a TypeError when input is invalid
+ *
+ * @param  {number} dimension the value to validate
+ * @param  {string} name      the name of the parameter (optional)
+ */
+function validateDimension(dimension, name) {
   name = name || 'Parameter'
 
   let isNotANumber = typeof dimension !== 'number'
-  if(isNotANumber){
+  if (isNotANumber) {
     throw new TypeError(`${name} should be a number.`)
   }
 
   let isInvalidDimension = dimension < 1
-  if(isInvalidDimension){
+  if (isInvalidDimension) {
     throw new TypeError(`${name} should be greater than 0.`)
   }
-
 }
 
-function ValidatePresence(element, name){
+/**
+ * validatePresence - Validates the input is not undefined
+ *  - throws a TypeError when input is undefined
+ *
+ * @param  {Object} element the input that is going to be validated
+ * @param  {string} name    the name of the parameter (optional)
+ */
+function validatePresence(element, name) {
   name = name || 'Parameter'
   let isUndefined = _.isUndefined(element)
-  if(isUndefined){
+  if (isUndefined) {
     throw new TypeError(`${name} should be present.`)
   }
 }
 
 export default {
-  ValidateDimension: ValidateDimension,
-  ValidatePresence: ValidatePresence
+  validateDimension: validateDimension,
+  validatePresence: validatePresence
 }
