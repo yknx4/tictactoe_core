@@ -38,7 +38,23 @@ function validatePresence(element, name) {
   }
 }
 
+/**
+ * validateType - Validates the input is instance of a specified type
+ *
+ * @param  {type} element the input that is going to be validated
+ * @param  {type} type    the type that the input should be instanceof
+ * @param  {type} name    the name of the parameter (optional)
+ */
+function validateType(element, type, name) {
+  name = name || 'Parameter'
+  let hasProperType = element instanceof type
+  if (!hasProperType) {
+    throw new TypeError(`${name} should be instance of #{type.name}.`)
+  }
+}
+
 export default {
   validateDimension: validateDimension,
-  validatePresence: validatePresence
+  validatePresence: validatePresence,
+  validateType: validateType
 }
