@@ -67,4 +67,26 @@ describe('ParameterValidation module', function() {
         .is(new TypeError('one should be present.'))
     })
   })
+
+  describe('validateType', function() {
+    it('validateType(parameter, type) - should throw and error when String is not Number', function() {
+      let validateTypeOnObject = function() {
+        ParameterValidation.validateType(String(1), Number)
+      }
+
+      test
+        .exception(validateTypeOnObject)
+        .is(new TypeError('Parameter should be instance of Number.'))
+    })
+
+    it('validateType(parameter, type, name) - should throw and error when String is not Number', function() {
+      let validateTypeOnObject = function() {
+        ParameterValidation.validateType(String(1), Number, 'one')
+      }
+
+      test
+        .exception(validateTypeOnObject)
+        .is(new TypeError('one should be instance of Number.'))
+    })
+  })
 })
