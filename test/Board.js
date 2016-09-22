@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 import test from 'unit.js'
 import Board from '../lib/Board'
 
@@ -8,7 +9,6 @@ describe('Board class', function() {
         .hasName('Board')
       .object(new Board())
         .isInstanceOf(Board)
-
   })
 
   it('constructor() - set default width', function() {
@@ -41,7 +41,7 @@ describe('Board class', function() {
   })
 
   it('constructor(5,3) - set width and height', function() {
-    let board = new Board(5,3)
+    let board = new Board(5, 3)
     test
       .number(board.width)
       .is(5)
@@ -50,5 +50,4 @@ describe('Board class', function() {
       .number(board.height)
       .is(3)
   })
-
 })

@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 import test from 'unit.js'
 import ParameterValidation from '../../lib/validation/ParameterValidation.js'
 
@@ -11,7 +12,6 @@ describe('ParameterValidation module', function() {
       test
         .exception(validateDimensionOnString)
         .is(new TypeError('Parameter should be a number.'))
-
     })
 
     it('validateDimension(parameter, name) - should throw and error when Dimension is not a number', function() {
@@ -22,7 +22,6 @@ describe('ParameterValidation module', function() {
       test
         .exception(validateDimensionOnString)
         .is(new TypeError('one should be a number.'))
-
     })
 
     it('validateDimension(parameter) - should throw and error when Dimension is negative', function() {
@@ -33,7 +32,6 @@ describe('ParameterValidation module', function() {
       test
         .exception(validateDimensionOnString)
         .is(new TypeError('Parameter should be greater than 0.'))
-
     })
 
     it('validateDimension(parameter, name) - should throw and error when Dimension is negative', function() {
@@ -44,9 +42,7 @@ describe('ParameterValidation module', function() {
       test
         .exception(validateDimensionOnString)
         .is(new TypeError('negative should be greater than 0.'))
-
     })
-
   })
 
   describe('validatePresence', function() {
@@ -58,7 +54,6 @@ describe('ParameterValidation module', function() {
       test
         .exception(validatePresenceOnUndefined)
         .is(new TypeError('Parameter should be present.'))
-
     })
 
     it('validatePresence(parameter, name) - should throw and error when Presence is not a number', function() {
@@ -70,10 +65,6 @@ describe('ParameterValidation module', function() {
       test
         .exception(validatePresenceOnUndefined)
         .is(new TypeError('one should be present.'))
-
     })
-
-
   })
-
 })

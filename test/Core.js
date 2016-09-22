@@ -1,3 +1,5 @@
+/* eslint-env node, mocha */
+/* eslint no-new: "off"*/
 import test from 'unit.js'
 import tictactoeCore from '../lib/main'
 import Game from '../lib/Game'
@@ -10,21 +12,18 @@ describe('tictactoe_core', function() {
         .hasName('tictactoeCore')
       .object(tictactoeCore())
         .isInstanceOf(Game)
-
   })
 
   describe('Base class', function() {
     it('constructor() - throw a TypeError', function() {
-      var newBase = function(){
+      var newBase = function() {
         new Base()
       }
 
       test
         .exception(newBase)
         .is(new TypeError("Cannot construct Base isnstances directly"))
-
     })
-
   })
 
   describe('Game class', function() {
@@ -34,9 +33,6 @@ describe('tictactoe_core', function() {
           .hasName('Game')
         .object(new Game())
           .isInstanceOf(Game)
-
     })
-    
   })
-
 })

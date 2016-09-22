@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 import test from 'unit.js'
 import Game from '../lib/Game'
 
@@ -15,5 +16,4 @@ describe('Game class', function() {
       .number(game.fieldsToWin)
       .is(3)
   })
-
 })
