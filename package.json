@@ -5,7 +5,7 @@
   "main": "lib/main.js",
   "scripts": {
     "test": "npm run compile && mocha test",
-    "compile": "babel --presets es2015 -d lib/ src/",
+    "compile": "babili --source-maps=both --comments=false --presets=es2015 -d lib/ src/",
     "prepublish": "npm run compile"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
+    "babili": "0.0.5",
     "mocha": "^3.0.2",
     "unit.js": "^2.0.0"
   },
@@ -38,6 +39,7 @@
   "babel": {
     "presets": [
       "es2015"
-    ]
+    ],
+    "sourceMap": "true"
   }
 }
