@@ -2,16 +2,16 @@ import Base from './Base'
 import _ from 'underscore'
 
 export default class WinnerChecker extends Base {
-  constructor(board, id, x, y, numberToWin) {
+  constructor(board, id, numberToWin) {
     super()
     this._id = id
-    this._x = x
-    this._y = y
     this._board = board
     this._numberToWin = numberToWin
   }
 
-  checkWinner() {
+  checkWinner(x, y) {
+    this._x = x
+    this._y = y
     let counts = [this._checkUpDown()]
     let winner = _.find(counts, num => {
       return num >= this._numberToWin

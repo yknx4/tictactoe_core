@@ -18,18 +18,16 @@ describe('Board class', function() {
     board.play('X', 1, 1)
     board.play('X', 1, 2)
 
-    let winnerChecker = new WinnerChecker(board, 'X', 1, 0, 3)
-    let winnerChecker2 = new WinnerChecker(board, 'X', 1, 1, 3)
-    let winnerChecker3 = new WinnerChecker(board, 'X', 1, 2, 3)
+    let winnerChecker = new WinnerChecker(board, 'X', 3)
 
     test
-      .bool(winnerChecker.checkWinner())
+      .bool(winnerChecker.checkWinner(1, 0))
       .isTrue()
     test
-      .bool(winnerChecker2.checkWinner())
+      .bool(winnerChecker.checkWinner(1, 1))
       .isTrue()
     test
-      .bool(winnerChecker3.checkWinner())
+      .bool(winnerChecker.checkWinner(1, 2))
       .isTrue()
   })
 })
