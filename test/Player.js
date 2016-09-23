@@ -40,7 +40,7 @@ describe('Player class', function() {
 
   it('game - should set game', function() {
     let player = new Player('X', 'Ale')
-    let game = new Game()
+    let game = new Game(3, 3)
 
     player.game = game
 

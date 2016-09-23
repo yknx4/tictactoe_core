@@ -27,11 +27,11 @@ describe('tictactoe_core', function() {
   })
 
   describe('Game class', function() {
-    it('constructor() - create a new Game', function() {
+    it('constructor(3, 3) - create a new Game', function() {
       test
         .function(Game)
           .hasName('Game')
-        .object(new Game())
+        .object(new Game(3, 3))
           .isInstanceOf(Game)
     })
   })

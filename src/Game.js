@@ -2,15 +2,24 @@ import Base from './Base';
 import Board from './Board'
 import Player from './Player'
 import ParameterValidation from './validation/ParameterValidation.js'
+import _ from 'underscore'
 
 export default class Game extends Base {
 
-  constructor(boardWidth, boardHeigth, numOfPlayers, fieldsToWin) {
+  constructor(boardWidth, boardHeigth, fieldsToWin, numOfPlayers) {
     super()
     this._numOfPlayers = numOfPlayers || 2
     this._fieldsToWin = fieldsToWin || 3
     this._board = new Board(boardWidth, boardHeigth)
     this._players = []
+    this._validateFieldsToWin(_.max([boardWidth, boardHeigth]))
+  }
+
+  _validateFieldsToWin(maxDimension) {
+    let winningIsImpossible = maxDimension < this._fieldsToWin
+    if (winningIsImpossible) {
+      throw new RangeError(`Fields to win should not be bigger than Board's max dimension`)
+    }
   }
 
   get numOfPlayers() {

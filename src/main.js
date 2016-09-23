@@ -6,7 +6,7 @@ import Game from './Game'
  * @return {Game}  returns a new instance of Game
  */
 function tictactoeCore() {
-  return new Game()
+  return new Game(3, 3)
 }
 
 export default tictactoeCore
