@@ -3,7 +3,7 @@ import test from 'unit.js'
 import WinnerChecker from '../lib/WinnerChecker'
 import Board from '../lib/Board'
 
-describe('Board class', function() {
+describe('WinnerChecker class', function() {
   it('constructor(X, 1, 1, 3) - create a new WinnerChecker', function() {
     test
     .function(WinnerChecker)
