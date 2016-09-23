@@ -30,4 +30,23 @@ describe('WinnerChecker class', function() {
       .bool(winnerChecker.checkWinner(1, 2))
       .isTrue()
   })
+
+  it("checkWinner() - should win when there are 3 same points horizontally", function() {
+    let board = new Board(3, 3)
+    board.play('X', 0, 1)
+    board.play('X', 1, 1)
+    board.play('X', 2, 1)
+
+    let winnerChecker = new WinnerChecker(board, 'X', 3)
+
+    test
+      .bool(winnerChecker.checkWinner(0, 1))
+      .isTrue()
+    test
+      .bool(winnerChecker.checkWinner(1, 1))
+      .isTrue()
+    test
+      .bool(winnerChecker.checkWinner(2, 1))
+      .isTrue()
+  })
 })

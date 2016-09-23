@@ -12,7 +12,7 @@ export default class WinnerChecker extends Base {
   checkWinner(x, y) {
     this._x = x
     this._y = y
-    let counts = [this._checkUpDown()]
+    let counts = [this._checkUpDown(), this._checkLeftRight()]
     let winner = _.find(counts, num => {
       return num >= this._numberToWin
     })
@@ -48,6 +48,37 @@ export default class WinnerChecker extends Base {
 
   _checkDown(x, y) {
     return this._check(x, y, 0, -1)
+  }
+
+  _checkLeftRight() {
+    let x = this._x
+    let y = this._y
+
+    let leftRightX = x
+    let leftRightY = y
+    let leftRightCount = 1
+
+    while (this._checkRigth(leftRightX, leftRightY)) {
+      leftRightCount++
+      leftRightX++
+    }
+
+    leftRightX = x
+    leftRightY = y
+
+    while (this._checkLeft(leftRightX, leftRightY)) {
+      leftRightCount++
+      leftRightX--
+    }
+    return leftRightCount
+  }
+
+  _checkLeft(x, y) {
+    return this._check(x, y, -1, 0)
+  }
+
+  _checkRigth(x, y) {
+    return this._check(x, y, 1, 0)
   }
 
   _check(x, y, directionX, directionY) {
