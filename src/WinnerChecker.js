@@ -12,7 +12,7 @@ export default class WinnerChecker extends Base {
   checkWinner(x, y) {
     this._x = x
     this._y = y
-    let counts = [this._checkUpDown(), this._checkLeftRight()]
+    let counts = [this._checkUpDown(), this._checkLeftRight(), this._checkSlash(), this._checkBackSlash()]
     let winner = _.find(counts, num => {
       return num >= this._numberToWin
     })
@@ -79,6 +79,72 @@ export default class WinnerChecker extends Base {
 
   _checkRigth(x, y) {
     return this._check(x, y, 1, 0)
+  }
+
+  _checkSlash() {
+    let x = this._x
+    let y = this._y
+
+    let slashX = x
+    let slashY = y
+    let slashCount = 1
+
+    while (this._checkSlashUp(slashX, slashY)) {
+      slashCount++
+      slashY++
+      slashX++
+    }
+
+    slashX = x
+    slashY = y
+
+    while (this._checkSlashDown(slashX, slashY)) {
+      slashCount++
+      slashY--
+      slashX--
+    }
+    return slashCount
+  }
+
+  _checkSlashUp(x, y) {
+    return this._check(x, y, 1, 1)
+  }
+
+  _checkSlashDown(x, y) {
+    return this._check(x, y, -1, -1)
+  }
+
+  _checkBackSlash() {
+    let x = this._x
+    let y = this._y
+
+    let backSlashX = x
+    let backSlashY = y
+    let backSlashCount = 1
+
+    while (this._checkBackSlashUp(backSlashX, backSlashY)) {
+      backSlashCount++
+      backSlashY++
+      backSlashX--
+    }
+
+    backSlashX = x
+    backSlashY = y
+
+    while (this._checkBackSlashDown(backSlashX, backSlashY)) {
+      backSlashCount++
+      backSlashY--
+      backSlashX++
+    }
+    return backSlashCount
+  }
+
+  _checkBackSlashUp(x, y) {
+    return this._check(x, y, -1, 1)
+  }
+
+  _checkBackSlashDown(x, y) {
+    return this._check(x, y, 1, -1)
   }
 
   _check(x, y, directionX, directionY) {
