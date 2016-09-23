@@ -56,7 +56,7 @@ describe('Board class', function() {
     board.play('X', 1, 1)
 
     test
-    .string(board.field[1][1])
+    .string(board.getCell(1, 1))
     .is('X')
   })
 

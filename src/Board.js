@@ -31,13 +31,9 @@ export default class Board extends Base {
     return this._height
   }
 
-  get field() {
-    return this._field;
-  }
-
   getCell(x, y) {
     if (this._xyIsOccupied(x, y)) {
-      return this.field[x][y]
+      return this._field[x][y]
     }
     return undefined
   }
@@ -62,13 +58,13 @@ export default class Board extends Base {
     }
 
     if (this._xyIsOccupied(x, y)) {
-      throw new Error(`(${x},${y}) is already set to '${this.field[x][y]}'.`)
+      throw new Error(`(${x},${y}) is already set to '${this.getCell(x, y)}'.`)
     }
   }
 
   _xyIsOccupied(x, y) {
-    let xExists = !_.isUndefined(this.field[x])
-    return xExists && !_.isUndefined(this.field[x][y])
+    let xExists = !_.isUndefined(this._field[x])
+    return xExists && !_.isUndefined(this._field[x][y])
   }
 
 }
