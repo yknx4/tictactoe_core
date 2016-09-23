@@ -49,7 +49,7 @@ function validateType(element, type, name) {
   name = name || 'Parameter'
   let hasProperType = element instanceof type
   if (!hasProperType) {
-    throw new TypeError(`${name} should be instance of #{type.name}.`)
+    throw new TypeError(`${name} should be instance of ${type.name}.`)
   }
 }
 

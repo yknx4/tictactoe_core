@@ -4,11 +4,11 @@ import WinnerChecker from '../lib/WinnerChecker'
 import Board from '../lib/Board'
 
 describe('WinnerChecker class', function() {
-  it('constructor(X, 1, 1, 3) - create a new WinnerChecker', function() {
+  it('constructor(Board, X, 3) - create a new WinnerChecker', function() {
     test
     .function(WinnerChecker)
     .hasName('WinnerChecker')
-    .object(new WinnerChecker('X', 1, 1, 3))
+    .object(new WinnerChecker(new Board(3, 3), 'X', 3))
     .isInstanceOf(WinnerChecker)
   })
 
