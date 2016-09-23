@@ -82,21 +82,4 @@ describe('Board class', function() {
       .exception(invalidPlay)
       .is(new Error("(1,1) is already set to 'X'."))
   })
-
-  it("checkWinner('X', 1, 1, 3) - should win when there are 3 same points vertically", function() {
-    let board = new Board(3, 3)
-    board.play('X', 1, 0)
-    board.play('X', 1, 1)
-    board.play('X', 1, 2)
-
-    test
-      .bool(board.checkWinner('X', 1, 0, 3))
-      .isTrue()
-    test
-      .bool(board.checkWinner('X', 1, 1, 3))
-      .isTrue()
-    test
-      .bool(board.checkWinner('X', 1, 2, 3))
-      .isTrue()
-  })
 })
