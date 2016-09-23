@@ -64,45 +64,4 @@ export default class Board extends Base {
     return xExists && !_.isUndefined(this.field[x][y])
   }
 
-  checkWinner(id, x, y, numberToWin) {
-    let counts = [this._checkUpDown(id, x, y)]
-
-    let winner = _.find(counts, function(num) {
-      return num >= numberToWin
-    })
-    return typeof winner !== 'undefined'
-  }
-
-  _checkUpDown(id, x, y) {
-    let upDownX = x
-    let upDownY = y
-    let upDownCount = 1
-    while (this._checkUp(id, upDownX, upDownY)) {
-      upDownCount++
-      upDownY++
-    }
-    upDownX = x
-    upDownY = y
-    while (this._checkDown(id, upDownX, upDownY)) {
-      upDownCount++
-      upDownY--
-    }
-    return upDownCount
-  }
-
-  _checkUp(id, x, y) {
-    return this._check(id, x, y, 0, 1)
-  }
-
-  _checkDown(id, x, y) {
-    return this._check(id, x, y, 0, -1)
-  }
-
-  _check(id, x, y, directionX, directionY) {
-    x += directionX
-    y += directionY
-    if (this._xyIsOccupied(x, y)) {
-      return this.field[x][y] === id
-    }
-  }
 }
