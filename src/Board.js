@@ -35,6 +35,13 @@ export default class Board extends Base {
     return this._field;
   }
 
+  getCell(x, y) {
+    if (this._xyIsOccupied(x, y)) {
+      return this.field[x][y]
+    }
+    return undefined
+  }
+
   play(id, x, y) {
     this._validatePosition(x, y)
 

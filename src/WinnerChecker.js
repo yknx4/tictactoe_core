@@ -84,8 +84,6 @@ export default class WinnerChecker extends Base {
   _check(x, y, directionX, directionY) {
     x += directionX
     y += directionY
-    if (this._board._xyIsOccupied(x, y)) {
-      return this._board.field[x][y] === this._id
-    }
+    return this._board.getCell(x, y) === this._id
   }
 }
