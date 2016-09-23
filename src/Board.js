@@ -65,6 +65,15 @@ export default class Board extends Base {
   }
 
   checkWinner(id, x, y, numberToWin) {
+    let counts = [this._checkUpDown(id, x, y)]
+
+    let winner = _.find(counts, function(num) {
+      return num >= numberToWin
+    })
+    return typeof winner !== 'undefined'
+  }
+
+  _checkUpDown(id, x, y) {
     let upDownX = x
     let upDownY = y
     let upDownCount = 1
@@ -78,21 +87,20 @@ export default class Board extends Base {
       upDownCount++
       upDownY--
     }
-
-    return upDownCount >= numberToWin
+    return upDownCount
   }
 
   _checkUp(id, x, y) {
-    return this._check(id, x, y, 'up')
+    return this._check(id, x, y, 0, 1)
   }
 
   _checkDown(id, x, y) {
-    return this._check(id, x, y, 'down')
+    return this._check(id, x, y, 0, -1)
   }
 
-  _check(id, x, y, direction) {
-    let sum = direction === 'up' ? 1 : -1
-    y += sum
+  _check(id, x, y, directionX, directionY) {
+    x += directionX
+    y += directionY
     if (this._xyIsOccupied(x, y)) {
       return this.field[x][y] === id
     }
