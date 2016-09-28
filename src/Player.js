@@ -29,4 +29,8 @@ export default class Player extends Base {
     this._game = game
   }
 
+  play(x, y) {
+    this.game.play(this.id, x, y)
+  }
+
 }
