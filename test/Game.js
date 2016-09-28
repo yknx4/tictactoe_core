@@ -102,7 +102,27 @@ describe('Game class', function() {
       .exception(notEnoughPlayers)
       .is(new RangeError('Game cannot start without all players.'))
     })
-    it("play('X', 1, 1) - should raise an event when X is winner", function() {
+
+    it("play('X', 2, 2) - should raise an error when a player want to plays twice in a row", function() {
+      let game = new Game(3, 3)
+      var player1 = new Player('X', 'name1')
+      let player2 = new Player('Y', 'name2')
+
+      game.addPlayer(player1)
+      game.addPlayer(player2)
+
+      let isTurnOfY = function() {
+        game.play('X', 0, 0)
+        game.play('X', 1, 1)
+        game.play('X', 2, 2)
+      }
+
+      test
+        .exception(isTurnOfY)
+        .is(new Error('This is turn of Y'))
+    })
+
+    it("play('X', 2, 2) - should raise an event when X is winner", function() {
       let game = new Game(3, 3)
       var player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
@@ -117,7 +137,9 @@ describe('Game class', function() {
       }
 
       game.play('X', 0, 0)
+      game.play('Y', 0, 1)
       game.play('X', 1, 1)
+      game.play('Y', 0, 2)
       game.play('X', 2, 2)
 
       test
