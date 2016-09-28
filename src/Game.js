@@ -37,6 +37,10 @@ export default class Game extends Base {
     return this._fieldsToWin;
   }
 
+  get board() {
+    return this._board
+  }
+
   addPlayer(player) {
     ParameterValidation.validateType(player, Player, 'player')
     let playerExists = !_.isUndefined(this.getPlayer(player.id))
