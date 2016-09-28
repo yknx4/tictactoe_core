@@ -1,6 +1,6 @@
 {
   "name": "tictactoe_core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Javascript Implementation of Tic Tac Toe Game",
   "main": "lib/main.js",
   "scripts": {
