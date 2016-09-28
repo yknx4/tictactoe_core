@@ -67,4 +67,10 @@ export default class Board extends Base {
     return xExists && !_.isUndefined(this._field[x][y])
   }
 
+  get count() {
+    return _.flatten(_.map(_.values(this._field), row => {
+      return _.values(row)
+    })).length
+  }
+
 }
