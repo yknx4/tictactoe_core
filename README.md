@@ -10,7 +10,6 @@ In order to practice what we have learned regarding OOP and best practices, let'
 * First time the game is played, __X__ starts
 * Each player alternate turns to put a mark in the board on any available slot
 * The game ends when either one of the players matches three marks in a horizontal, vertical or diagonal row or there are no more moves available
-* Once the game finishes, players are asked if they want to play again. If they do, the player who lost the previous match starts. In case of a draw, the player who did the second-to-last movement starts
 
 ## Considerations
 
@@ -21,6 +20,7 @@ and to allow any other developer to reuse your code.
 * What if we want to make it configurable for N players instead of 2?
 * And, will the logic need to change if we want to create a N x M board instead of N x N?
 * Remember this code is supposed to be used by other programmers so they need to be well documented and tested
+* Once the game finishes, players are asked if they want to play again. If they do, the player who lost the previous match starts. In case of a draw, the player who did the second-to-last movement starts
 
 ## Deliverables
 
@@ -38,9 +38,9 @@ Once we have all the logic documented and tested, we will create some clients th
 
 ## Milestones
 
-- [ ] Make sure the objective, requirements and restrictions are understood
+- [x] Make sure the objective, requirements and restrictions are understood
 - [ ] Create the diagram
-- [ ] Create the library with all the logic. For this point, investigate NPM and bower and choose one and explain your choice
+- [x] Create the library with all the logic. For this point, investigate NPM and bower and choose one and explain your choice
 - [ ] Create terminal interface
 - [ ] Create web app (Using HTML and CSS)
 - [ ] Create RESTful API
