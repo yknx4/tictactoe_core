@@ -39,6 +39,8 @@ export default class Board extends Base {
   }
 
   play(id, x, y) {
+    x = parseInt(x, 10)
+    y = parseInt(y, 10)
     this._validatePosition(x, y)
 
     let field = this._field
