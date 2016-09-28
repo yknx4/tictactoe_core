@@ -1,4 +1,5 @@
 import Game from './Game'
+import Player from './Player'
 
 /**
  * tictactoeCore - Tic-Tac-Toe (Gato in Spanish) game implementation
@@ -9,4 +10,4 @@ function tictactoeCore() {
   return new Game(3, 3)
 }
 
-export default tictactoeCore
+export default {default: tictactoeCore, game: Game, player: Player}

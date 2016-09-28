@@ -8,9 +8,9 @@ import Base from '../lib/Base'
 describe('tictactoe_core', function() {
   it('load', function() {
     test
-      .function(tictactoeCore)
+      .function(tictactoeCore.default)
         .hasName('tictactoeCore')
-      .object(tictactoeCore())
+      .object(tictactoeCore.default())
         .isInstanceOf(Game)
   })
 
