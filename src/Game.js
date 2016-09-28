@@ -64,7 +64,12 @@ export default class Game extends Base {
   play(playerId, x, y) {
     this._validateHasAllPlayers()
     this._validateTurn(playerId)
-    this._board.play(playerId, x, y)
+    try {
+      this._board.play(playerId, x, y)
+    } catch (e) {
+      this._undoTurn()
+      throw e
+    }
     this._checkWinners(playerId, x, y)
     this._checkDraw()
   }
@@ -84,6 +89,15 @@ export default class Game extends Base {
     } else {
       throw new Error(`This is turn of ${this._nextTurn}`)
     }
+  }
+
+  _undoTurn() {
+    let playerPosition = _.findIndex(this._players, {id: this._nextTurn})
+    let nextPlayerPosition = (playerPosition - 1) % this._numOfPlayers
+    if (nextPlayerPosition < 0) {
+      nextPlayerPosition += this._numOfPlayers
+    }
+    this._nextTurn = this._players[nextPlayerPosition].id
   }
 
   firstTurn() {

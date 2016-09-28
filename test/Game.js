@@ -105,7 +105,7 @@ describe('Game class', function() {
 
     it("play('X', 2, 2) - should raise an error when a player want to plays twice in a row", function() {
       let game = new Game(3, 3)
-      var player1 = new Player('X', 'name1')
+      let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
       game.addPlayer(player1)
@@ -124,13 +124,13 @@ describe('Game class', function() {
 
     it("play('X', 2, 2) - should raise an event with player 'X' when X is winner", function() {
       let game = new Game(3, 3)
-      var player1 = new Player('X', 'name1')
+      let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
       game.addPlayer(player1)
       game.addPlayer(player2)
 
-      var raised = false
+      let raised = false
 
       game.onWinnerListener = function(player) {
         raised = player1.id === player.id
@@ -149,13 +149,13 @@ describe('Game class', function() {
 
     it("play('X', 2, 1) - should raise an event with null when there is no winner", function() {
       let game = new Game(3, 3)
-      var player1 = new Player('X', 'name1')
+      let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
       game.addPlayer(player1)
       game.addPlayer(player2)
 
-      var raised = false
+      let raised = false
 
       game.onWinnerListener = function(player) {
         raised = player === null
@@ -174,6 +174,26 @@ describe('Game class', function() {
       test
         .bool(raised)
         .isTrue()
+    })
+
+    it("play('X', 2, 2) - should set the turn back to the player when there is an error", function() {
+      let game = new Game(3, 3)
+      let player1 = new Player('X', 'name1')
+      let player2 = new Player('Y', 'name2')
+
+      game.addPlayer(player1)
+      game.addPlayer(player2)
+
+      let alreadyOccupied = function() {
+        game.play('X', 0, 0)
+        game.play('Y', 0, 0)
+      }
+
+      test
+        .exception(alreadyOccupied)
+        .is(new Error("(0,0) is already set to 'X'."))
+        .value(game._nextTurn)
+        .is('Y')
     })
   })
 })
