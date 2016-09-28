@@ -45,6 +45,7 @@ export default class Game extends Base {
       return
     }
     this._validatePlayerCount()
+    player.game = this
     this._players.push(player)
     this._winnerCheckers[player.id] = new WinnerChecker(this._board, player.id, this.fieldsToWin)
   }
