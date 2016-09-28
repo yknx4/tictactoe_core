@@ -122,7 +122,7 @@ describe('Game class', function() {
         .is(new Error('This is turn of Y'))
     })
 
-    it("play('X', 2, 2) - should raise an event when X is winner", function() {
+    it("play('X', 2, 2) - should raise an event with player 'X' when X is winner", function() {
       let game = new Game(3, 3)
       var player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
@@ -141,6 +141,35 @@ describe('Game class', function() {
       game.play('X', 1, 1)
       game.play('Y', 0, 2)
       game.play('X', 2, 2)
+
+      test
+        .bool(raised)
+        .isTrue()
+    })
+
+    it("play('X', 2, 1) - should raise an event with null when there is no winner", function() {
+      let game = new Game(3, 3)
+      var player1 = new Player('X', 'name1')
+      let player2 = new Player('Y', 'name2')
+
+      game.addPlayer(player1)
+      game.addPlayer(player2)
+
+      var raised = false
+
+      game.onWinnerListener = function(player) {
+        raised = player === null
+      }
+
+      game.play('X', 0, 0)
+      game.play('Y', 0, 1)
+      game.play('X', 0, 2)
+      game.play('Y', 1, 0)
+      game.play('X', 1, 2)
+      game.play('Y', 1, 1)
+      game.play('X', 2, 0)
+      game.play('Y', 2, 2)
+      game.play('X', 2, 1)
 
       test
         .bool(raised)

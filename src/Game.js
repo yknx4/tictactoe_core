@@ -66,6 +66,7 @@ export default class Game extends Base {
     this._validateTurn(playerId)
     this._board.play(playerId, x, y)
     this._checkWinners(playerId, x, y)
+    this._checkDraw()
   }
 
   _validateHasAllPlayers() {
@@ -93,8 +94,25 @@ export default class Game extends Base {
     let winnerListenerExists = !_.isUndefined(this._onWinnerListener)
     if (this._winnerCheckers[playerId].checkWinner(x, y) && winnerListenerExists) {
       this._onWinnerListener(this.getPlayer(playerId))
+      this._finished = true
     } else if (!winnerListenerExists) {
       console.warn('There is no onWinnerListener attached.')
+    }
+  }
+
+  _checkDraw() {
+    let noWinners = !(this._finished === true)
+    let winnerListenerExists = !_.isUndefined(this._onWinnerListener)
+    if (noWinners) {
+      let board = this._board
+      let maxPlays = board.height * board.width
+      let playsCount = board.count
+      let isDraw = playsCount === maxPlays
+      if (isDraw && winnerListenerExists) {
+        this._onWinnerListener(null)
+      } else if (!winnerListenerExists) {
+        console.warn('There is no onWinnerListener attached.')
+      }
     }
   }
 
