@@ -25,14 +25,4 @@ describe('tictactoe_core', function() {
         .is(new TypeError("Cannot construct Base isnstances directly"))
     })
   })
-
-  describe('Game class', function() {
-    it('constructor(3, 3) - create a new Game', function() {
-      test
-        .function(Game)
-          .hasName('Game')
-        .object(new Game(3, 3))
-          .isInstanceOf(Game)
-    })
-  })
 })
