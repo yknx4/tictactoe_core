@@ -39,9 +39,9 @@ Once we have all the logic documented and tested, we will create some clients th
 ## Milestones
 
 - [x] Make sure the objective, requirements and restrictions are understood
-- [ ] Create the diagram
+- [x] Create the diagram
 - [x] Create the library with all the logic. For this point, investigate NPM and bower and choose one and explain your choice
-- [ ] Create terminal interface
+- [x] Create terminal interface
 - [ ] Create web app (Using HTML and CSS)
 - [ ] Create RESTful API
 - [ ] Create Electron app
