@@ -1,34 +1,24 @@
 import Base from './Base'
+import GameSetting from './GameSetting'
 import ParameterValidation from './validation/ParameterValidation.js'
 import _ from 'underscore'
 
 export default class Board extends Base {
 
-  constructor(width, height) {
+  constructor(gameSetting) {
     super()
-    width = width || 3
-    height = height || width
-    this._validateInput(width, height)
-    this._setupDimensions(width, height)
+    gameSetting = gameSetting || new GameSetting()
+    ParameterValidation.validateType(gameSetting, GameSetting, 'gameSetting')
     this._field = {}
-  }
-
-  _validateInput(width, height) {
-    ParameterValidation.validateDimension(width, 'width')
-    ParameterValidation.validateDimension(height, 'height')
-  }
-
-  _setupDimensions(width, height) {
-    this._width = width
-    this._height = height
+    this._gameSetting = gameSetting
   }
 
   get width() {
-    return this._width
+    return this._gameSetting.boardWidth
   }
 
   get height() {
-    return this._height
+    return this._gameSetting.boardHeight
   }
 
   getCell(x, y) {

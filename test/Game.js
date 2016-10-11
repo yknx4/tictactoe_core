@@ -6,50 +6,16 @@ import Board from '../lib/Board'
 import Player from '../lib/Player'
 
 describe('Game class', function() {
-  describe('#constructor', function() {
-    it('constructor(3, 3) - set default number of players', function() {
-      let game = new Game(3, 3)
-      test
-      .number(game.numOfPlayers)
-      .is(2)
-    })
-
-    it('constructor(3, 3) - set default fields to win count', function() {
-      let game = new Game(3, 3)
-      test
-      .number(game.fieldsToWin)
-      .is(3)
-    })
-
-    it('constructor(3, 3) - create a 3x3 Board', function() {
-      let game = new Game(3, 3)
-      test
+  it('constructor() - create a 3x3 Board', function() {
+    let game = new Game()
+    test
       .object(game._board)
       .isInstanceOf(Board)
-    })
-
-    it('constructor(3, 3) - throw and error when fields to win is outside board boundaries', function() {
-      let createWrongGame = function() {
-        new Game(3, 3, 4)
-      }
-      test
-      .exception(createWrongGame)
-      .is(new RangeError(`Fields to win should not be bigger than Board's max dimension`))
-    })
-
-    it('constructor(3, 3, 2, 5) - set number of players to 5 and fields to win to 2', function() {
-      let game = new Game(3, 3, 2, 5)
-      test
-      .number(game.numOfPlayers)
-      .is(5)
-      .number(game.fieldsToWin)
-      .is(2)
-    })
   })
 
   describe('#addPlayer', function() {
     it('addPlayer(player) - should throw error if player is not a player', function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player = String('Player')
       let stringIsNotPlayer = function() {
         game.addPlayer(player)
@@ -61,7 +27,7 @@ describe('Game class', function() {
     })
 
     it('addPlayer(player) - should throw error if game is full', function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
       let player3 = new Player('Z', 'name3')
@@ -77,7 +43,7 @@ describe('Game class', function() {
     })
 
     it('addPlayer(player) - should set player to input', function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player = new Player('X', 'name')
 
       game.addPlayer(player)
@@ -90,7 +56,7 @@ describe('Game class', function() {
 
   describe('#play', function() {
     it("play('X', 1, 1) - should throw an error if game doesn't have enough players", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       game.addPlayer(player1)
 
@@ -104,7 +70,7 @@ describe('Game class', function() {
     })
 
     it("play('X', 2, 2) - should raise an error when a player want to plays twice in a row", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
@@ -123,7 +89,7 @@ describe('Game class', function() {
     })
 
     it("play('X', 2, 2) - should raise an event with player 'X' when X is winner", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
@@ -148,7 +114,7 @@ describe('Game class', function() {
     })
 
     it("play('X', 2, 1) - should raise an event with null when there is no winner", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
@@ -177,7 +143,7 @@ describe('Game class', function() {
     })
 
     it("play('X', 2, 2) - should set the turn back to the player when there is an error", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       let player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 

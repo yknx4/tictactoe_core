@@ -1,6 +1,7 @@
 /* eslint-env node, mocha */
 import test from 'unit.js'
 import Board from '../lib/Board'
+import GameSetting from '../lib/GameSetting'
 
 describe('Board class', function() {
   describe('#constructor', function() {
@@ -26,23 +27,26 @@ describe('Board class', function() {
       .is(3)
     })
 
-    it('constructor(5) - set width', function() {
-      let board = new Board(5)
+    it('constructor(gameSettings) - set width', function() {
+      let settings = new GameSetting().setBoardDimensions(5)
+      let board = new Board(settings)
       test
       .number(board.width)
       .is(5)
     })
 
-    it('constructor(5) - set height same as width', function() {
-      let board = new Board(5)
+    it('constructor(gameSettings) - set height same as width', function() {
+      let settings = new GameSetting().setBoardDimensions(5)
+      let board = new Board(settings)
       test
       .number(board.height)
       .is(board.width)
       .is(5)
     })
 
-    it('constructor(5,3) - set width and height', function() {
-      let board = new Board(5, 3)
+    it('constructor(gameSettings) - set width and height', function() {
+      let settings = new GameSetting().setBoardDimensions(5, 3)
+      let board = new Board(settings)
       test
       .number(board.width)
       .is(5)
@@ -55,7 +59,7 @@ describe('Board class', function() {
 
   describe('#play', function() {
     it("play('X', 1, 1) - should set (1,1) on field as 'X'", function() {
-      let board = new Board(3, 3)
+      let board = new Board()
       board.play('X', 1, 1)
 
       test
@@ -64,7 +68,7 @@ describe('Board class', function() {
     })
 
     it("play('X', 3, 3) - should throw an error in a 3x3 Board", function() {
-      let board = new Board(3, 3)
+      let board = new Board()
       var invalidPlay = function() {
         board.play('X', 3, 3)
       }
@@ -75,7 +79,7 @@ describe('Board class', function() {
     })
 
     it("play('Y', 1, 1) - should throw an error when (1,1) is already set", function() {
-      let board = new Board(3, 3)
+      let board = new Board()
       var invalidPlay = function() {
         board.play('X', 1, 1)
         board.play('Y', 1, 1)
@@ -89,7 +93,7 @@ describe('Board class', function() {
 
   describe('#count', function() {
     it("should be 3 when play is done 3 times", function() {
-      let board = new Board(3, 3)
+      let board = new Board()
       board.play('X', 1, 1)
       board.play('X', 1, 2)
       board.play('X', 0, 0)

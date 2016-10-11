@@ -3,30 +3,24 @@ import Board from './Board'
 import Player from './Player'
 import ParameterValidation from './validation/ParameterValidation.js'
 import WinnerChecker from './WinnerChecker'
+import GameSetting from './GameSetting'
 import _ from 'underscore'
 
 export default class Game extends Base {
 
-  constructor(boardWidth, boardHeigth, fieldsToWin, numOfPlayers) {
+  constructor(gameSetting) {
     super()
-    this._numOfPlayers = numOfPlayers || 2
-    this._fieldsToWin = fieldsToWin || 3
-    this._board = new Board(boardWidth, boardHeigth)
+    gameSetting = gameSetting || new GameSetting()
+    ParameterValidation.validateType(gameSetting, GameSetting, 'gameSetting')
+    this._board = new Board(gameSetting)
     this._players = []
     this._winnerCheckers = {}
-    this._validateFieldsToWin(_.max([boardWidth, boardHeigth]))
     this._nextTurn = ''
-  }
-
-  _validateFieldsToWin(maxDimension) {
-    let winningIsImpossible = maxDimension < this._fieldsToWin
-    if (winningIsImpossible) {
-      throw new RangeError(`Fields to win should not be bigger than Board's max dimension`)
-    }
+    this._gameSetting = gameSetting;
   }
 
   get numOfPlayers() {
-    return this._numOfPlayers;
+    return this._gameSetting.numberOfPlayers;
   }
 
   get playerCount() {
@@ -34,7 +28,7 @@ export default class Game extends Base {
   }
 
   get fieldsToWin() {
-    return this._fieldsToWin;
+    return this._gameSetting.fieldsToWin;
   }
 
   get board() {
@@ -88,7 +82,7 @@ export default class Game extends Base {
   _validateTurn(id) {
     if (this.firstTurn() || this._nextTurn === id) {
       let playerPosition = _.findIndex(this._players, {id: id})
-      let nextPlayerPosition = (playerPosition + 1) % this._numOfPlayers
+      let nextPlayerPosition = (playerPosition + 1) % this._gameSetting.numberOfPlayers
       this._nextTurn = this._players[nextPlayerPosition].id
     } else {
       throw new Error(`This is turn of ${this._nextTurn}`)
@@ -97,9 +91,9 @@ export default class Game extends Base {
 
   _undoTurn() {
     let playerPosition = _.findIndex(this._players, {id: this._nextTurn})
-    let nextPlayerPosition = (playerPosition - 1) % this._numOfPlayers
+    let nextPlayerPosition = (playerPosition - 1) % this._gameSetting.numberOfPlayers
     if (nextPlayerPosition < 0) {
-      nextPlayerPosition += this._numOfPlayers
+      nextPlayerPosition += this._gameSetting.numberOfPlayers
     }
     this._nextTurn = this._players[nextPlayerPosition].id
   }

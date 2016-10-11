@@ -8,12 +8,12 @@ describe('WinnerChecker class', function() {
     test
     .function(WinnerChecker)
     .hasName('WinnerChecker')
-    .object(new WinnerChecker(new Board(3, 3), 'X', 3))
+    .object(new WinnerChecker(new Board(), 'X', 3))
     .isInstanceOf(WinnerChecker)
   })
 
   it("checkWinner() - should win when there are 3 same points vertically", function() {
-    let board = new Board(3, 3)
+    let board = new Board()
     board.play('X', 1, 0)
     board.play('X', 1, 1)
     board.play('X', 1, 2)
@@ -32,7 +32,7 @@ describe('WinnerChecker class', function() {
   })
 
   it("checkWinner() - should win when there are 3 same points horizontally", function() {
-    let board = new Board(3, 3)
+    let board = new Board()
     board.play('X', 0, 1)
     board.play('X', 1, 1)
     board.play('X', 2, 1)
@@ -51,7 +51,7 @@ describe('WinnerChecker class', function() {
   })
 
   it("checkWinner() - should win when there are 3 same points in / direction", function() {
-    let board = new Board(3, 3)
+    let board = new Board()
     board.play('X', 0, 0)
     board.play('X', 1, 1)
     board.play('X', 2, 2)
@@ -70,7 +70,7 @@ describe('WinnerChecker class', function() {
   })
 
   it("checkWinner() - should win when there are 3 same points in \\ direction", function() {
-    let board = new Board(3, 3)
+    let board = new Board()
     board.play('X', 2, 0)
     board.play('X', 1, 1)
     board.play('X', 0, 2)

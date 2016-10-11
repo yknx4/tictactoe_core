@@ -43,7 +43,7 @@ describe('Player class', function() {
   describe('#game', function() {
     it('should set game', function() {
       let player = new Player('X', 'Ale')
-      let game = new Game(3, 3)
+      let game = new Game()
 
       player.game = game
 
@@ -67,7 +67,7 @@ describe('Player class', function() {
 
   describe('#play', function() {
     it("play(2, 2) - should raise an event when X is winner", function() {
-      let game = new Game(3, 3)
+      let game = new Game()
       var player1 = new Player('X', 'name1')
       let player2 = new Player('Y', 'name2')
 
