@@ -1,0 +1,16 @@
+    it('constructor() - create a 3x3 Board', function() {
+      let gameSetting = new GameSetting()
+      test
+      .object(gameSetting._board)
+      .isInstanceOf(Board)
+    })[WinnerChecker|-playerId:string;-numberToWin:int|checkWinner(x y):boolean],
+[Board|width:int;heigth:int;count:int;-field:Hash|play(id x y);getCell(x y):string],
+[Player|id:string;name:string|play(x y)],
+[Game|numOfPlayers:int;playerCount:int;fieldsToWin:int;onWinnerListener:function|addPlayer(player);getPlayer():Player;play(id x y);firstTurn():boolean; onWinnerListener(player)],
+[Game]-checkWinner()>[WinnerChecker],
+[Game]-play()>[Board],
+[Player]-play()>[Game],
+[Game]<>-1>[Board],
+[WinnerChecker]<>-1>[Board],
+[Game]<>-1..*[Player],
+[Game]<>-1..*[WinnerChecker]
