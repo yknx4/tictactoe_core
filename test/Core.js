@@ -3,7 +3,6 @@
 import test from 'unit.js'
 import tictactoeCore from '../lib/main'
 import Game from '../lib/Game'
-import Base from '../lib/Base'
 
 describe('tictactoe_core', function() {
   it('load', function() {
@@ -12,17 +11,5 @@ describe('tictactoe_core', function() {
         .hasName('tictactoeCore')
       .object(tictactoeCore.default())
         .isInstanceOf(Game)
-  })
-
-  describe('Base class', function() {
-    it('constructor() - throw a TypeError', function() {
-      var newBase = function() {
-        new Base()
-      }
-
-      test
-        .exception(newBase)
-        .is(new TypeError("Cannot construct Base isnstances directly"))
-    })
   })
 })

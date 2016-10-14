@@ -1,12 +1,10 @@
-import Base from './Base'
 import GameSetting from './GameSetting'
 import ParameterValidation from './validation/ParameterValidation.js'
 import _ from 'underscore'
 
-export default class Board extends Base {
+export default class Board {
 
   constructor(gameSetting) {
-    super()
     gameSetting = gameSetting || new GameSetting()
     ParameterValidation.validateType(gameSetting, GameSetting, 'gameSetting')
     this._field = {}

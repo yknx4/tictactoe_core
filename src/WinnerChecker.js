@@ -1,11 +1,9 @@
-import Base from './Base'
 import Board from './Board'
 import ParameterValidation from './validation/ParameterValidation.js'
 import _ from 'underscore'
 
-export default class WinnerChecker extends Base {
+export default class WinnerChecker {
   constructor(board, id, numberToWin) {
-    super()
     this._id = id
     this._board = board
     this._numberToWin = numberToWin

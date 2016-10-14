@@ -1,11 +1,9 @@
-import Base from './Base'
 import Game from './Game'
 import ParameterValidation from './validation/ParameterValidation.js'
 
-export default class Player extends Base {
+export default class Player {
 
   constructor(id, name) {
-    super()
     ParameterValidation.validatePresence(id, 'id')
     ParameterValidation.validatePresence(name, 'name')
     this._id = id

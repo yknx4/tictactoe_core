@@ -1,4 +1,3 @@
-import Base from './Base';
 import Board from './Board'
 import Player from './Player'
 import ParameterValidation from './validation/ParameterValidation.js'
@@ -6,10 +5,9 @@ import WinnerChecker from './WinnerChecker'
 import GameSetting from './GameSetting'
 import _ from 'underscore'
 
-export default class Game extends Base {
+export default class Game {
 
   constructor(gameSetting) {
-    super()
     gameSetting = gameSetting || new GameSetting()
     ParameterValidation.validateType(gameSetting, GameSetting, 'gameSetting')
     this._board = new Board(gameSetting)
