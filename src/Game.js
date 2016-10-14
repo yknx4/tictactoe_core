@@ -43,7 +43,11 @@ export default class Game {
     this._validatePlayerCount()
     player.game = this
     this._players.push(player)
-    this._winnerCheckers[player.id] = new WinnerChecker(this._board, player.id, this.fieldsToWin)
+    this._winnerCheckers[player.id] = new WinnerChecker({
+      board: this._board,
+      id: player.id,
+      numberToWin: this.fieldsToWin
+    })
   }
 
   getPlayer(playerId) {

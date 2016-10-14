@@ -8,7 +8,7 @@ describe('WinnerChecker class', function() {
     test
     .function(WinnerChecker)
     .hasName('WinnerChecker')
-    .object(new WinnerChecker(new Board(), 'X', 3))
+    .object(new WinnerChecker({board: new Board(), id: 'X', numberToWin: 3}))
     .isInstanceOf(WinnerChecker)
   })
 
@@ -18,7 +18,7 @@ describe('WinnerChecker class', function() {
     board.play('X', 1, 1)
     board.play('X', 1, 2)
 
-    let winnerChecker = new WinnerChecker(board, 'X', 3)
+    let winnerChecker = new WinnerChecker({board: board, id: 'X', numberToWin: 3})
 
     test
       .bool(winnerChecker.checkWinner(1, 0))
@@ -37,7 +37,7 @@ describe('WinnerChecker class', function() {
     board.play('X', 1, 1)
     board.play('X', 2, 1)
 
-    let winnerChecker = new WinnerChecker(board, 'X', 3)
+    let winnerChecker = new WinnerChecker({board: board, id: 'X', numberToWin: 3})
 
     test
       .bool(winnerChecker.checkWinner(0, 1))
@@ -56,7 +56,7 @@ describe('WinnerChecker class', function() {
     board.play('X', 1, 1)
     board.play('X', 2, 2)
 
-    let winnerChecker = new WinnerChecker(board, 'X', 3)
+    let winnerChecker = new WinnerChecker({board: board, id: 'X', numberToWin: 3})
 
     test
       .bool(winnerChecker.checkWinner(0, 0))
@@ -75,7 +75,7 @@ describe('WinnerChecker class', function() {
     board.play('X', 1, 1)
     board.play('X', 0, 2)
 
-    let winnerChecker = new WinnerChecker(board, 'X', 3)
+    let winnerChecker = new WinnerChecker({board: board, id: 'X', numberToWin: 3})
 
     test
       .bool(winnerChecker.checkWinner(2, 0))
