@@ -4,7 +4,8 @@
   "description": "Javascript Implementation of Tic Tac Toe Game",
   "main": "lib/main.js",
   "scripts": {
-    "test": "npm run compile && npm run lint_tests && mocha test",
+    "test": "npm run lint_tests && mocha test",
+    "debug": "mocha --debug-brk --inspect",
     "compile": "npm run lint && babel --source-maps=both --comments=false --presets=es2015 -d lib/ src/",
     "prepublish": "npm run compile",
     "lint": "eslint src/",
