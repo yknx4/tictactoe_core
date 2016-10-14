@@ -1,8 +1,8 @@
 /* eslint-env node, mocha */
 /* eslint no-new: "off"*/
 import test from 'unit.js'
-import Player from '../lib/Player'
-import Game from '../lib/Game'
+import Player from '../src/Player'
+import Game from '../src/Game'
 
 describe('Player class', function() {
   describe('#constructor', function() {

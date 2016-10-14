@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 import test from 'unit.js'
-import ParameterValidation from '../../lib/validation/ParameterValidation.js'
+import ParameterValidation from '../../src/validation/ParameterValidation.js'
 
 describe('ParameterValidation module', function() {
   describe('validateDimension', function() {

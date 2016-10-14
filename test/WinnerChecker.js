@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 import test from 'unit.js'
-import WinnerChecker from '../lib/WinnerChecker'
-import Board from '../lib/Board'
+import WinnerChecker from '../src/WinnerChecker'
+import Board from '../src/Board'
 
 describe('WinnerChecker class', function() {
   it('constructor(Board, X, 3) - create a new WinnerChecker', function() {

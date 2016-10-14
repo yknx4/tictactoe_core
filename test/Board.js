@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 import test from 'unit.js'
-import Board from '../lib/Board'
-import GameSetting from '../lib/GameSetting'
+import Board from '../src/Board'
+import GameSetting from '../src/GameSetting'
 
 describe('Board class', function() {
   describe('#constructor', function() {

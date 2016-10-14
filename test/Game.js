@@ -1,9 +1,9 @@
 /* eslint-env node, mocha */
 /* eslint no-new: "off"*/
 import test from 'unit.js'
-import Game from '../lib/Game'
-import Board from '../lib/Board'
-import Player from '../lib/Player'
+import Game from '../src/Game'
+import Board from '../src/Board'
+import Player from '../src/Player'
 
 describe('Game class', function() {
   it('constructor() - create a 3x3 Board', function() {

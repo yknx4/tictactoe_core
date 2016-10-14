@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 /* eslint no-new: "off"*/
 import test from 'unit.js'
-import GameSetting from '../lib/GameSetting'
+import GameSetting from '../src/GameSetting'
 
 describe('GameSetting class', function() {
   describe('#constructor', function() {
